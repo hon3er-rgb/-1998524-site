@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -113,6 +113,7 @@
       color:#fff;
       font-weight:700;
       transition:0.3s;
+      font-family:'Tajawal',sans-serif;
     }
 
     .toggle-btn:hover{
@@ -487,7 +488,7 @@
 
     .feature-list li{
       padding:8px 0;
-      padding-right:30px;
+      padding-left:30px;
       position:relative;
       opacity:0.8;
       color:#333;
@@ -496,7 +497,7 @@
     .feature-list li:before{
       content:'✓';
       position:absolute;
-      right:0;
+      left:0;
       color:#2563eb;
       font-weight:bold;
       font-size:1.2rem;
@@ -734,13 +735,13 @@
       <div class="logo">1998524</div>
 
       <div class="nav-links">
-        <a href="#home">الرئيسية</a>
-        <a href="#projects">المشاريع</a>
-        <a href="#about">معلومات</a>
-        <a href="#contact">تواصل</a>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
 
         <button class="toggle-btn" id="themeToggle">
-          الوضع الليلي
+          Dark Mode
         </button>
       </div>
 
@@ -762,16 +763,16 @@
       </div>
 
       <p>
-        مشاريع برمجية احترافية وعصرية جاهزة للبيع
+        Professional and modern programming projects ready for sale
       </p>
 
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">
-          استكشف المشاريع
+          Explore Projects
         </a>
 
         <a href="#contact" class="btn btn-outline">
-          تواصل معنا
+          Contact Us
         </a>
       </div>
 
@@ -786,11 +787,11 @@
     <div class="container">
 
       <h2 class="section-title">
-        🚀 المشاريع البرمجية
+        🚀 Programming Projects
       </h2>
 
       <p class="section-sub">
-        مشاريع احترافية وعصرية جاهزة للاستخدام الفوري
+        Professional and modern projects ready for immediate use
       </p>
 
       <div class="projects-grid" id="projectsGrid"></div>
@@ -806,39 +807,39 @@
     <div class="container">
 
       <h2 class="section-title">
-        عن الشركة
+        About Company
       </h2>
 
       <p class="section-sub">
-        نبني أنظمة برمجية حديثة وتطبيقات رقمية مستقبلية للشركات والمؤسسات
+        We build modern software systems and futuristic digital applications for companies and organizations
       </p>
 
       <div class="about-grid">
 
         <div class="about-card">
           <i class="fa-solid fa-code"></i>
-          <h3>تطوير ويب احترافي</h3>
+          <h3>Professional Web Development</h3>
           <p>
-            تطبيقات ويب متطورة باستخدام أحدث التقنيات
-            بهندسة معمارية قابلة للتوسع وأمان عالي
+            Advanced web applications using cutting-edge technologies
+            with scalable architecture and high security
           </p>
         </div>
 
         <div class="about-card">
           <i class="fa-solid fa-laptop-code"></i>
-          <h3>مشاريع مخصصة</h3>
+          <h3>Custom Projects</h3>
           <p>
-            أنظمة إدارة، لوحات تحكم، حلول POS
-            وأنظمة ERP وواجهات برمجية متقدمة
+            Management systems, control panels, POS solutions,
+            ERP systems and advanced APIs
           </p>
         </div>
 
         <div class="about-card">
           <i class="fa-solid fa-shield-halved"></i>
-          <h3>أمان احترافي</h3>
+          <h3>Professional Security</h3>
           <p>
-            تكاملات آمنة مع المصادقة والتشفير
-            إدارة قواعد البيانات والقابلية للتوسع السحابية
+            Secure integrations with authentication and encryption,
+            database management and cloud scalability
           </p>
         </div>
 
@@ -855,11 +856,11 @@
     <div class="container">
 
       <h2 class="section-title">
-        تواصل معنا
+        Contact Us
       </h2>
 
       <p class="section-sub">
-        تواصل معنا فوراً عبر قنوات الاتصال المفضلة لديك
+        Contact us immediately through your preferred communication channel
       </p>
 
       <div class="contact-wrapper">
@@ -910,25 +911,25 @@
       <div class="project-image" id="modalImage" style="width:100%;height:200px;border-radius:12px;margin-bottom:20px;"></div>
 
       <div class="modal-details">
-        <h3>📋 الوصف الكامل</h3>
+        <h3>📋 Full Description</h3>
         <p id="modalDescription"></p>
 
-        <h3>✨ المميزات الرئيسية</h3>
+        <h3>✨ Main Features</h3>
         <ul class="feature-list" id="modalFeatures"></ul>
 
-        <h3>🛠️ التقنيات المستخدمة</h3>
+        <h3>🛠️ Technologies Used</h3>
         <p id="modalTech"></p>
 
-        <h3>📊 معلومات إضافية</h3>
+        <h3>📊 Additional Information</h3>
         <p id="modalInfo"></p>
       </div>
 
       <div class="modal-footer">
         <div>
-          <h3 style="margin-bottom:10px;color:#1a1a1a;">السعر:</h3>
+          <h3 style="margin-bottom:10px;color:#1a1a1a;">Price:</h3>
           <div class="modal-price" id="modalPrice">$0</div>
         </div>
-        <button class="btn-buy-modal" onclick="buyProject()">🛒 اشتري الآن</button>
+        <button class="btn-buy-modal" onclick="buyProject()">🛒 Buy Now</button>
       </div>
     </div>
   </div>
@@ -941,112 +942,112 @@
     const projects = [
       {
         id:1,
-        name:"نظام إدارة المستشفيات",
+        name:"Hospital Management System",
         icon:"🏥",
         price:2499,
-        description:"نظام متكامل لإدارة المستشفيات والعيادات الطبية مع إدارة المرضى والتقارير الطبية والعقاقير",
-        features:["إدارة المرضى","جدولة المواعيد","التقارير الطبية","إدارة الأدوية","نظام الفواتير"],
+        description:"Integrated system for managing hospitals and clinics with patient management and medical reports",
+        features:["Patient Management","Appointment Scheduling","Medical Reports","Drug Management","Billing System"],
         tech:"React, Node.js, MongoDB, MySQL",
-        info:"النظام يدعم اللغة العربية بشكل كامل ويعمل على جميع الأجهزة",
+        info:"The system fully supports Arabic and works on all devices",
         grad:"grad-1"
       },
       {
         id:2,
-        name:"متجر إلكتروني متقدم",
+        name:"Advanced E-Commerce Store",
         icon:"🛒",
         price:1999,
-        description:"متجر إلكتروني احترافي مع نظام دفع متكامل وإدارة مخزون ذكية وتقارير مفصلة",
-        features:["نظام الدفع الآمن","إدارة المخزون","نظام التقييمات","سلة الشراء","تتبع الطلبات"],
+        description:"Professional e-commerce store with integrated payment system and smart inventory management",
+        features:["Secure Payment System","Inventory Management","Rating System","Shopping Cart","Order Tracking"],
         tech:"Next.js, Firebase, Stripe, Redux",
-        info:"يدعم عملات متعددة ويحتوي على لوحة تحكم متقدمة",
+        info:"Supports multiple currencies and includes advanced control panel",
         grad:"grad-2"
       },
       {
         id:3,
-        name:"نظام الحجز والمواعيد",
+        name:"Booking and Appointment System",
         icon:"📅",
         price:1599,
-        description:"تطبيق متكامل لحجز المواعيد مع إشعارات تلقائية وتقارير مفصلة وإدارة الجداول",
-        features:["حجز المواعيد","إشعارات SMS","تقارير يومية","إدارة التقويم","تذكيرات آلية"],
+        description:"Integrated application for appointment booking with automatic notifications and detailed reports",
+        features:["Appointment Booking","SMS Notifications","Daily Reports","Calendar Management","Automatic Reminders"],
         tech:"Vue.js, Firebase, Twilio",
-        info:"يعمل مع أي نوع خدمات وبسهولة التخصيص",
+        info:"Works with any type of service and easy to customize",
         grad:"grad-3"
       },
       {
         id:4,
-        name:"نظام إدارة الموارد البشرية",
+        name:"Human Resources Management System",
         icon:"👥",
         price:2899,
-        description:"نظام شامل لإدارة الموظفين والرواتب والإجازات والتقييمات والحضور",
-        features:["إدارة الموظفين","حساب الرواتب","طلبات الإجازات","تقييم الأداء","الحضور والغياب"],
+        description:"Comprehensive system for managing employees, salaries, leave, performance and attendance",
+        features:["Employee Management","Salary Calculation","Leave Requests","Performance Rating","Attendance Tracking"],
         tech:"React, Express.js, PostgreSQL, Redis",
-        info:"نظام معقد يدعم المؤسسات الكبيرة والصغيرة",
+        info:"Complex system supports large and small organizations",
         grad:"grad-4"
       },
       {
         id:5,
-        name:"تطبيق التعليم الإلكتروني",
+        name:"E-Learning Application",
         icon:"📚",
         price:2199,
-        description:"منصة تعليم إلكترونية متكاملة مع مكتبة فيديوهات وامتحانات تفاعلية وشهادات",
-        features:["مكتبة الفيديوهات","الامتحانات التفاعلية","نظام النقاط","شهادات رقمية","تتبع التقدم"],
+        description:"Integrated e-learning platform with video library, interactive exams and certificates",
+        features:["Video Library","Interactive Exams","Points System","Digital Certificates","Progress Tracking"],
         tech:"Angular, Node.js, MongoDB, AWS",
-        info:"مناسبة للمدارس والجامعات والدورات التدريبية",
+        info:"Suitable for schools, universities and training courses",
         grad:"grad-5"
       },
       {
         id:6,
-        name:"نظام إدارة الفعاليات",
+        name:"Event Management System",
         icon:"🎉",
         price:1899,
-        description:"تطبيق متخصص لإدارة الفعاليات والحفلات والمؤتمرات بكفاءة عالية",
-        features:["إدارة التذاكر","نظام التسجيل","الدفع الإلكتروني","إدارة المقاعد","التقارير والإحصائيات"],
+        description:"Specialized application for managing events, parties and conferences efficiently",
+        features:["Ticket Management","Registration System","Electronic Payment","Seat Management","Reports and Statistics"],
         tech:"React, Stripe, Socket.io, Node.js",
-        info:"يدعم بيع التذاكر بسهولة مع إشعارات فورية",
+        info:"Supports easy ticket sales with instant notifications",
         grad:"grad-6"
       },
       {
         id:7,
-        name:"منصة التسويق بالعمولة",
+        name:"Affiliate Marketing Platform",
         icon:"💰",
         price:2799,
-        description:"منصة متقدمة للتسويق بالعمولة مع تتبع دقيق ونظام دفع آلي وتقارير شاملة",
-        features:["إدارة الأفليت","تتبع المبيعات","الدفع الآلي","تقارير مفصلة","إدارة العروض"],
+        description:"Advanced platform for affiliate marketing with accurate tracking and automatic payment system",
+        features:["Affiliate Management","Sales Tracking","Automatic Payment","Detailed Reports","Offer Management"],
         tech:"Next.js, Prisma, PostgreSQL, Stripe",
-        info:"نظام أمان عالي مع تحليلات متقدمة",
+        info:"High security system with advanced analytics",
         grad:"grad-7"
       },
       {
         id:8,
-        name:"تطبيق خدمات التوصيل",
+        name:"Delivery Services Application",
         icon:"🚚",
         price:3299,
-        description:"تطبيق متكامل لخدمات التوصيل مع تتبع فوري وإدارة السائقين والعملاء",
-        features:["تتبع فوري","إدارة السائقين","حساب الرسوم","تقييم الخدمة","دعم العملاء"],
+        description:"Integrated application for delivery services with real-time tracking and driver management",
+        features:["Real-Time Tracking","Driver Management","Fee Calculation","Service Rating","Customer Support"],
         tech:"React Native, Firebase, Google Maps, Node.js",
-        info:"يعمل على iOS و Android مع واجهات متقدمة",
+        info:"Works on iOS and Android with advanced interfaces",
         grad:"grad-8"
       },
       {
         id:9,
-        name:"لوحة التحكم التحليلية",
+        name:"Analytics Control Panel",
         icon:"📊",
         price:2099,
-        description:"لوحة تحكم متقدمة بتحليلات وإحصائيات شاملة ورسوم بيانية تفاعلية",
-        features:["تحليلات فورية","رسوم بيانية متقدمة","تقارير قابلة للتخصيص","تصدير البيانات","تنبيهات ذكية"],
+        description:"Advanced control panel with analytics, statistics and interactive charts",
+        features:["Real-Time Analytics","Advanced Charts","Customizable Reports","Data Export","Smart Alerts"],
         tech:"React, D3.js, Apache, Python",
-        info:"يدعم ملايين البيانات مع أداء عالي",
+        info:"Supports millions of data with high performance",
         grad:"grad-9"
       },
       {
         id:10,
-        name:"منصة التراسل المشفرة",
+        name:"Encrypted Messaging Platform",
         icon:"💬",
         price:1799,
-        description:"تطبيق تراسل آمن مع تشفير عالي الأمان وميزات متقدمة للتواصل",
-        features:["التشفير من طرف إلى طرف","محادثات جماعية","مشاركة الملفات","استدعاءات فيديو","الرسائل الصوتية"],
+        description:"Secure messaging application with high-security encryption and advanced features",
+        features:["End-to-End Encryption","Group Chats","File Sharing","Video Calls","Voice Messages"],
         tech:"React.js, WebSocket, JWT, Encryption",
-        info:"يدعم الحسابات المتعددة والخصوصية الكاملة",
+        info:"Supports multiple accounts and complete privacy",
         grad:"grad-10"
       }
     ];
@@ -1071,10 +1072,10 @@
             <div class="project-price">$${project.price}</div>
             <div class="project-buttons">
               <button class="btn-small btn-details" onclick="openModal(${project.id})">
-                📖 التفاصيل
+                📖 Details
               </button>
               <button class="btn-small btn-buy" onclick="buyProject(${project.id})">
-                💳 شراء
+                💳 Buy
               </button>
             </div>
           </div>
@@ -1125,7 +1126,7 @@
 
       if(!project) return;
 
-      const message = `السلام عليكم، أنا مهتم بشراء المشروع: ${project.name} (رقم المشروع: ${project.id}) - السعر: $${project.price}`;
+      const message = `Hello, I am interested in buying the project: ${project.name} (Project #${project.id}) - Price: $${project.price}`;
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/9647882983338?text=${encodedMessage}`;
 
@@ -1163,7 +1164,7 @@
 
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      toggleBtn.textContent = document.body.classList.contains('dark-mode') ? 'الوضع النهاري' : 'الوضع الليلي';
+      toggleBtn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
     });
 
     // Initialize
