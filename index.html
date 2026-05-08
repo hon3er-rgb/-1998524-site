@@ -44,20 +44,41 @@
       position:relative;
     }
 
+    /* Animated Background */
     body::before{
       content:'';
       position:fixed;
       top:0;
       left:0;
-      width:100%;
-      height:100%;
+      width:200%;
+      height:200%;
+      background:linear-gradient(45deg, #050505, #1a1a2e, #0f3460, #050505);
+      background-size:200% 200%;
+      animation:gradientShift 15s ease infinite;
       pointer-events:none;
-      z-index:1;
+      z-index:0;
+    }
+
+    @keyframes gradientShift{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
     }
 
     body.light{
       background:var(--light-bg);
       color:var(--light-text);
+    }
+
+    body.light::before{
+      background:linear-gradient(45deg, #f8f9fb, #e0e7ff, #dbeafe, #f8f9fb);
+      animation:gradientShiftLight 15s ease infinite;
+    }
+
+    @keyframes gradientShiftLight{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
     }
 
     a{
@@ -69,6 +90,8 @@
       width:90%;
       max-width:1400px;
       margin:auto;
+      position:relative;
+      z-index:2;
     }
 
     /* NAVBAR */
@@ -149,6 +172,7 @@
       text-align:center;
       position:relative;
       overflow:hidden;
+      z-index:2;
     }
 
     .hero::before{
@@ -272,6 +296,8 @@
 
     section{
       padding:100px 0;
+      position:relative;
+      z-index:2;
     }
 
     .section-title{
@@ -288,6 +314,323 @@
       opacity:0.75;
       margin-bottom:60px;
       line-height:1.8;
+    }
+
+    /* PROJECTS GRID */
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:var(--dark-card);
+      padding:0;
+      border-radius:20px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.05);
+      display:flex;
+      flex-direction:column;
+      cursor:pointer;
+      transform:translateZ(0);
+    }
+
+    body.light .project-card{
+      background:var(--light-card);
+    }
+
+    .project-card:hover{
+      transform:translateY(-15px) scale(1.02);
+      border-color:var(--dark-accent);
+      box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    body.light .project-card:hover{
+      border-color:var(--light-accent);
+      box-shadow:0 20px 60px rgba(37,99,235,0.2);
+    }
+
+    .project-image{
+      width:100%;
+      height:220px;
+      background:linear-gradient(135deg,#667eea,#764ba2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:4rem;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .project-image.grad-1{background:linear-gradient(135deg,#667eea,#764ba2);}
+    .project-image.grad-2{background:linear-gradient(135deg,#f093fb,#f5576c);}
+    .project-image.grad-3{background:linear-gradient(135deg,#4facfe,#00f2fe);}
+    .project-image.grad-4{background:linear-gradient(135deg,#43e97b,#38f9d7);}
+    .project-image.grad-5{background:linear-gradient(135deg,#fa709a,#fee140);}
+    .project-image.grad-6{background:linear-gradient(135deg,#30cfd0,#330867);}
+    .project-image.grad-7{background:linear-gradient(135deg,#a8edea,#fed6e3);}
+    .project-image.grad-8{background:linear-gradient(135deg,#ff9a56,#ff6a88);}
+    .project-image.grad-9{background:linear-gradient(135deg,#2e2e78,#662d91);}
+    .project-image.grad-10{background:linear-gradient(135deg,#00c6ff,#0072ff);}
+
+    .project-content{
+      padding:25px;
+      flex-grow:1;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .project-tag{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:50px;
+      background:rgba(217,164,0,0.15);
+      color:var(--dark-accent);
+      font-size:0.85rem;
+      font-weight:700;
+      margin-bottom:12px;
+      width:fit-content;
+    }
+
+    body.light .project-tag{
+      background:rgba(37,99,235,0.12);
+      color:var(--light-accent);
+    }
+
+    .project-title{
+      font-size:1.6rem;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .project-price{
+      font-size:2rem;
+      font-weight:800;
+      color:var(--dark-accent);
+      margin:15px 0;
+    }
+
+    body.light .project-price{
+      color:var(--light-accent);
+    }
+
+    .project-buttons{
+      display:flex;
+      gap:12px;
+      margin-top:auto;
+      padding-top:15px;
+    }
+
+    .btn-small{
+      flex:1;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:700;
+      transition:0.3s;
+      border:none;
+      cursor:pointer;
+      font-size:0.95rem;
+    }
+
+    .btn-details{
+      background:rgba(217,164,0,0.2);
+      color:var(--dark-accent);
+      border:1px solid var(--dark-accent);
+    }
+
+    .btn-details:hover{
+      background:var(--dark-accent);
+      color:#000;
+    }
+
+    body.light .btn-details{
+      background:rgba(37,99,235,0.15);
+      color:var(--light-accent);
+      border-color:var(--light-accent);
+    }
+
+    body.light .btn-details:hover{
+      background:var(--light-accent);
+      color:white;
+    }
+
+    .btn-buy{
+      background:var(--dark-accent);
+      color:#000;
+    }
+
+    .btn-buy:hover{
+      transform:scale(1.05);
+    }
+
+    body.light .btn-buy{
+      background:var(--light-accent);
+      color:white;
+    }
+
+    /* MODAL */
+
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:9999;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(5px);
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .modal.show{
+      display:flex;
+    }
+
+    .modal-content{
+      background:var(--dark-card);
+      padding:40px;
+      border-radius:20px;
+      max-width:600px;
+      width:100%;
+      border:1px solid rgba(255,255,255,0.1);
+      max-height:90vh;
+      overflow-y:auto;
+      animation:slideUp 0.4s ease;
+    }
+
+    body.light .modal-content{
+      background:var(--light-card);
+    }
+
+    @keyframes slideUp{
+      from{
+        transform:translateY(50px);
+        opacity:0;
+      }
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+      padding-bottom:20px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    .modal-title{
+      font-size:2rem;
+      font-weight:800;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      font-size:2rem;
+      cursor:pointer;
+      color:var(--dark-text);
+      transition:0.3s;
+    }
+
+    .close-btn:hover{
+      color:var(--dark-accent);
+    }
+
+    .modal-details{
+      margin:20px 0;
+    }
+
+    .modal-details h3{
+      font-size:1.3rem;
+      color:var(--dark-accent);
+      margin:15px 0 10px;
+      font-weight:700;
+    }
+
+    body.light .modal-details h3{
+      color:var(--light-accent);
+    }
+
+    .modal-details p{
+      opacity:0.85;
+      line-height:1.8;
+      margin-bottom:10px;
+    }
+
+    .feature-list{
+      list-style:none;
+      margin:15px 0;
+    }
+
+    .feature-list li{
+      padding:8px 0;
+      padding-left:30px;
+      position:relative;
+      opacity:0.85;
+    }
+
+    .feature-list li:before{
+      content:'✓';
+      position:absolute;
+      left:0;
+      color:var(--dark-accent);
+      font-weight:bold;
+      font-size:1.2rem;
+    }
+
+    body.light .feature-list li:before{
+      color:var(--light-accent);
+    }
+
+    .modal-footer{
+      margin-top:30px;
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      display:flex;
+      gap:15px;
+    }
+
+    .modal-price{
+      font-size:2.5rem;
+      font-weight:800;
+      color:var(--dark-accent);
+      margin:20px 0;
+    }
+
+    body.light .modal-price{
+      color:var(--light-accent);
+    }
+
+    .btn-buy-modal{
+      flex:1;
+      padding:15px;
+      background:var(--dark-accent);
+      color:#000;
+      border:none;
+      border-radius:12px;
+      font-weight:700;
+      font-size:1.1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn-buy-modal:hover{
+      transform:scale(1.05);
+    }
+
+    body.light .btn-buy-modal{
+      background:var(--light-accent);
+      color:white;
     }
 
     /* ABOUT */
@@ -327,123 +670,6 @@
 
     body.light .about-card i{
       color:var(--light-accent);
-    }
-
-    /* PRODUCTS */
-
-    .products-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
-    }
-
-    .product-card{
-      background:var(--dark-card);
-      padding:25px;
-      border-radius:20px;
-      transition:0.4s;
-      position:relative;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.05);
-      display:flex;
-      flex-direction:column;
-    }
-
-    body.light .product-card{
-      background:var(--light-card);
-    }
-
-    .product-image{
-      width:100%;
-      height:180px;
-      border-radius:12px;
-      margin-bottom:15px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:2.5rem;
-      overflow:hidden;
-      position:relative;
-    }
-
-    .product-image.grad-1{background:linear-gradient(135deg,#667eea,#764ba2);}
-    .product-image.grad-2{background:linear-gradient(135deg,#f093fb,#f5576c);}
-    .product-image.grad-3{background:linear-gradient(135deg,#4facfe,#00f2fe);}
-    .product-image.grad-4{background:linear-gradient(135deg,#43e97b,#38f9d7);}
-    .product-image.grad-5{background:linear-gradient(135deg,#fa709a,#fee140);}
-    .product-image.grad-6{background:linear-gradient(135deg,#30cfd0,#330867);}
-    .product-image.grad-7{background:linear-gradient(135deg,#a8edea,#fed6e3);}
-    .product-image.grad-8{background:linear-gradient(135deg,#ff9a56,#ff6a88);}
-    .product-image.grad-9{background:linear-gradient(135deg,#2e2e78,#662d91);}
-    .product-image.grad-10{background:linear-gradient(135deg,#00c6ff,#0072ff);}
-
-    .product-card:hover{
-      transform:translateY(-12px) scale(1.02);
-      border-color:var(--dark-accent);
-      box-shadow:0 10px 40px rgba(0,0,0,0.3);
-    }
-
-    body.light .product-card:hover{
-      border-color:var(--light-accent);
-    }
-
-    .product-card h3{
-      margin:10px 0 8px;
-      font-size:1.3rem;
-    }
-
-    .product-card p{
-      opacity:0.8;
-      line-height:1.6;
-      flex-grow:1;
-      margin-bottom:12px;
-    }
-
-    .product-price{
-      font-size:1.8rem;
-      font-weight:800;
-      color:var(--dark-accent);
-      margin:12px 0;
-    }
-
-    body.light .product-price{
-      color:var(--light-accent);
-    }
-
-    .product-tag{
-      display:inline-block;
-      padding:8px 14px;
-      border-radius:50px;
-      background:rgba(217,164,0,0.15);
-      color:var(--dark-accent);
-      font-size:0.9rem;
-      font-weight:700;
-      margin-bottom:10px;
-    }
-
-    body.light .product-tag{
-      background:rgba(37,99,235,0.12);
-      color:var(--light-accent);
-    }
-
-    .details-btn{
-      margin-top:25px;
-      display:inline-block;
-      padding:12px 20px;
-      border-radius:12px;
-      background:var(--dark-accent);
-      color:black;
-      font-weight:700;
-      transition:0.3s;
-    }
-
-    body.light .details-btn{
-      background:var(--light-accent);
-      color:white;
-    }
-
-    .details-btn:hover{
-      transform:scale(1.05);
     }
 
     /* CONTACT */
@@ -493,6 +719,8 @@
       text-align:center;
       opacity:0.7;
       border-top:1px solid rgba(255,255,255,0.05);
+      position:relative;
+      z-index:2;
     }
 
     /* FLOATING PARTICLES BACKGROUND */
@@ -535,29 +763,16 @@
         font-size:2rem;
       }
 
-      .products-grid{
-        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-        gap:15px;
+      .projects-grid{
+        grid-template-columns:1fr;
       }
 
-      .product-card{
-        padding:18px;
+      .project-image{
+        height:180px;
       }
 
-      .product-image{
-        height:150px;
-      }
-
-      .product-card h3{
-        font-size:1.1rem;
-      }
-
-      .product-card p{
-        font-size:0.9rem;
-      }
-
-      .product-price{
-        font-size:1.5rem;
+      .modal-content{
+        padding:25px;
       }
 
       .about-grid{
@@ -593,7 +808,7 @@
         font-size:1.8rem;
       }
 
-      .products-grid{
+      .projects-grid{
         grid-template-columns:1fr;
       }
 
@@ -608,6 +823,14 @@
 
       .btn{
         width:100%;
+      }
+
+      .modal-content{
+        padding:20px;
+      }
+
+      .project-buttons{
+        flex-direction:column;
       }
 
     }
@@ -626,8 +849,8 @@
 
       <div class="nav-links">
         <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
         <a href="#about">About</a>
-        <a href="#products">Products</a>
         <a href="#contact">Contact</a>
 
         <button class="toggle-btn" id="themeToggle">
@@ -647,26 +870,45 @@
       <div class="terminal">
 
         <div class="typing">
-          > 1998524
+          > 1998524 Projects
         </div>
 
       </div>
 
       <p>
-        Futuristic Software Engineering Platform specialized in
-        Medical Systems, Management Solutions, Web Development,
-        API Integrations and Ultra Professional Digital Products.
+        مشاريع برمجية احترافية وعصرية جاهزة للبيع
+        Modern Software Projects Ready for Sale
       </p>
 
       <div class="hero-buttons">
-        <a href="#products" class="btn btn-primary">
-          Explore Products
+        <a href="#projects" class="btn btn-primary">
+          استكشف المشاريع
         </a>
 
         <a href="#contact" class="btn btn-outline">
-          Contact Support
+          تواصل معنا
         </a>
       </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        🚀 المشاريع البرمجية
+      </h2>
+
+      <p class="section-sub">
+        مشاريع احترافية وعصرية جاهزة للاستخدام الفوري
+      </p>
+
+      <div class="projects-grid" id="projectsGrid"></div>
 
     </div>
 
@@ -679,64 +921,43 @@
     <div class="container">
 
       <h2 class="section-title">
-        About Us
+        عن شركتنا
       </h2>
 
       <p class="section-sub">
-        We build ultra-modern software systems and futuristic digital experiences
-        for startups, companies, clinics, and enterprises.
+        نبني أنظمة برمجية حديثة وتطبيقات رقمية مستقبلية للشركات والمؤسسات
       </p>
 
       <div class="about-grid">
 
         <div class="about-card">
           <i class="fa-solid fa-code"></i>
-          <h3>Web Development</h3>
+          <h3>تطوير ويب احترافي</h3>
           <p>
-            Full-stack applications using modern technologies
-            with scalable architecture and high security.
+            تطبيقات ويب متطورة باستخدام أحدث التقنيات
+            بهندسة معمارية قابلة للتوسع وأمان عالي
           </p>
         </div>
 
         <div class="about-card">
           <i class="fa-solid fa-laptop-code"></i>
-          <h3>Custom Systems</h3>
+          <h3>مشاريع مخصصة</h3>
           <p>
-            Medical systems, management dashboards,
-            POS solutions, ERP systems and APIs.
+            أنظمة إدارة، لوحات تحكم، حلول POS
+            وأنظمة ERP وواجهات برمجية متقدمة
           </p>
         </div>
 
         <div class="about-card">
           <i class="fa-solid fa-shield-halved"></i>
-          <h3>Professional Security</h3>
+          <h3>أمان احترافي</h3>
           <p>
-            Secure backend integrations with authentication,
-            database management and cloud scalability.
+            تكاملات آمنة مع المصادقة والتشفير
+            إدارة قواعد البيانات والقابلية للتوسع السحابية
           </p>
         </div>
 
       </div>
-
-    </div>
-
-  </section>
-
-  <!-- PRODUCTS -->
-
-  <section id="products">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Software Products
-      </h2>
-
-      <p class="section-sub">
-        40 Professional Software Solutions crafted for innovation.
-      </p>
-
-      <div class="products-grid" id="productsGrid"></div>
 
     </div>
 
@@ -749,11 +970,11 @@
     <div class="container">
 
       <h2 class="section-title">
-        Contact & Support
+        تواصل معنا
       </h2>
 
       <p class="section-sub">
-        Connect with us instantly through your favorite platform.
+        تواصل معنا فوراً عبر قنوات الاتصال المفضلة لديك
       </p>
 
       <div class="contact-wrapper">
@@ -792,9 +1013,272 @@
     © 2026 - 1998524 | Ultra Professional Software Solutions
   </footer>
 
+  <!-- MODAL -->
+
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Project Name</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+
+      <div class="modal-image" id="modalImage" style="width:100%;height:200px;border-radius:12px;margin-bottom:20px;"></div>
+
+      <div class="modal-details">
+        <h3>📋 الوصف الكامل</h3>
+        <p id="modalDescription"></p>
+
+        <h3>✨ المميزات الرئيسية</h3>
+        <ul class="feature-list" id="modalFeatures"></ul>
+
+        <h3>🛠️ التقنيات المستخدمة</h3>
+        <p id="modalTech"></p>
+
+        <h3>📊 معلومات إضافية</h3>
+        <p id="modalInfo"></p>
+      </div>
+
+      <div class="modal-footer">
+        <div>
+          <h3 style="margin-bottom:10px;">السعر:</h3>
+          <div class="modal-price" id="modalPrice">$0</div>
+        </div>
+        <button class="btn-buy-modal" onclick="buyProject()">🛒 اشتري الآن</button>
+      </div>
+    </div>
+  </div>
+
   <!-- SCRIPT -->
 
   <script>
+
+    // Projects Data
+    const projects = [
+      {
+        id:1,
+        name:"نظام إدارة المستشفيات",
+        icon:"🏥",
+        price:2499,
+        description:"نظام متكامل لإدارة المستشفيات والعيادات الطبية مع إدارة المرضى والتقارير الطبية",
+        features:["إدارة المرضى","جدولة المواعيد","التقارير الطبية","إدارة الأدوية","نظام الفواتير"],
+        tech:"React, Node.js, MongoDB, MySQL",
+        info:"النظام يدعم اللغة العربية بشكل كامل ويعمل على جميع الأجهزة",
+        grad:"grad-1"
+      },
+      {
+        id:2,
+        name:"متجر إلكتروني متقدم",
+        icon:"🛒",
+        price:1999,
+        description:"متجر إلكتروني احترافي مع نظام دفع متكامل وإدارة مخزون ذكية",
+        features:["نظام الدفع الآمن","إدارة المخزون","نظام التقييمات","سلة الشراء","تتبع الطلبات"],
+        tech:"Next.js, Firebase, Stripe, Redux",
+        info:"يدعم عملات متعددة ويحتوي على لوحة تحكم متقدمة",
+        grad:"grad-2"
+      },
+      {
+        id:3,
+        name:"نظام الحجز والمواعيد",
+        icon:"📅",
+        price:1599,
+        description:"تطبيق متكامل لحجز المواعيد مع إشعارات تلقائية وتقارير مفصلة",
+        features:["حجز المواعيد","إشعارات SMS","تقارير يومية","إدارة التقويم","تذكيرات آلية"],
+        tech:"Vue.js, Firebase, Twilio",
+        info:"يعمل مع أي نوع خدمات وبسهولة التخصيص",
+        grad:"grad-3"
+      },
+      {
+        id:4,
+        name:"نظام إدارة الموارد البشرية",
+        icon:"👥",
+        price:2899,
+        description:"نظام شامل لإدارة الموظفين والرواتب والإجازات والتقييمات",
+        features:["إدارة الموظفين","حساب الرواتب","طلبات الإجازات","تقييم الأداء","الحضور والغياب"],
+        tech:"React, Express.js, PostgreSQL, Redis",
+        info:"نظام معقد يدعم المؤسسات الكبيرة والصغيرة",
+        grad:"grad-4"
+      },
+      {
+        id:5,
+        name:"تطبيق التعليم الإلكتروني",
+        icon:"📚",
+        price:2199,
+        description:"منصة تعليم إلكترونية متكاملة مع مكتبة فيديوهات وامتحانات تفاعلية",
+        features:["مكتبة الفيديوهات","الامتحانات التفاعلية","نظام النقاط","شهادات رقمية","تتبع التقدم"],
+        tech:"Angular, Node.js, MongoDB, AWS",
+        info:"مناسبة للمدارس والجامعات والدورات التدريبية",
+        grad:"grad-5"
+      },
+      {
+        id:6,
+        name:"نظام إدارة الفعاليات",
+        icon:"🎉",
+        price:1899,
+        description:"تطبيق متخصص لإدارة الفعاليات والحفلات والمؤتمرات بكفاءة عالية",
+        features:["إدارة التذاكر","نظام التسجيل","الدفع الإلكتروني","إدارة المقاعد","التقارير والإحصائيات"],
+        tech:"React, Stripe, Socket.io, Node.js",
+        info:"يدعم بيع التذاكر بسهولة مع إشعارات فورية",
+        grad:"grad-6"
+      },
+      {
+        id:7,
+        name:"منصة التسويق بالعمولة",
+        icon:"💰",
+        price:2799,
+        description:"منصة متقدمة للتسويق بالعمولة مع تتبع دقيق ونظام دفع آلي",
+        features:["إدارة الأفليت","تتبع المبيعات","الدفع الآلي","تقارير مفصلة","إدارة العروض"],
+        tech:"Next.js, Prisma, PostgreSQL, Stripe",
+        info:"نظام أمان عالي مع تحليلات متقدمة",
+        grad:"grad-7"
+      },
+      {
+        id:8,
+        name:"تطبيق خدمات توصيل",
+        icon:"🚚",
+        price:3299,
+        description:"تطبيق متكامل لخدمات التوصيل مع تتبع فوري وإدارة السائقين",
+        features:["تتبع فوري","إدارة السائقين","حساب الرسوم","تقييم الخدمة","دعم العملاء"],
+        tech:"React Native, Firebase, Google Maps, Node.js",
+        info:"يعمل على iOS و Android مع واجهات متقدمة",
+        grad:"grad-8"
+      },
+      {
+        id:9,
+        name:"نظام لوحة تحكم تحليلية",
+        icon:"📊",
+        price:2099,
+        description:"لوحة تحكم متقدمة بتحليلات وإحصائيات شاملة ورسوم بيانية تفاعلية",
+        features:["تحليلات فورية","رسوم بيانية متقدمة","تقارير قابلة للتخصيص","تصدير البيانات","تنبيهات ذكية"],
+        tech:"React, D3.js, Apache, Python",
+        info:"يدعم ملايين البيانات مع أداء عالي",
+        grad:"grad-9"
+      },
+      {
+        id:10,
+        name:"منصة التراسل المشفرة",
+        icon:"💬",
+        price:1799,
+        description:"تطبيق تراسل آمن مع تشفير عالي الأمان وميزات متقدمة",
+        features:["التشفير من طرف إلى طرف","محادثات جماعية","مشاركة الملفات","استدعاءات فيديو","الرسائل الصوتية"],
+        tech:"React.js, WebSocket, JWT, Encryption",
+        info:"يدعم الحسابات المتعددة والخصوصية الكاملة",
+        grad:"grad-10"
+      }
+    ];
+
+    let currentProject = null;
+
+    // Render Projects
+    function renderProjects(){
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+
+      projects.forEach((project,index) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `
+          <div class="project-image ${project.grad}">
+            ${project.icon}
+          </div>
+          <div class="project-content">
+            <span class="project-tag">🎯 Premium Project</span>
+            <h3 class="project-title">${project.name}</h3>
+            <div class="project-price">$${project.price}</div>
+            <div class="project-buttons">
+              <button class="btn-small btn-details" onclick="openModal(${project.id})">
+                📖 التفاصيل
+              </button>
+              <button class="btn-small btn-buy" onclick="buyProject(${project.id})">
+                💳 شراء
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Open Modal
+    function openModal(projectId){
+      const project = projects.find(p => p.id === projectId);
+      if(!project) return;
+
+      currentProject = project;
+
+      document.getElementById('modalTitle').textContent = project.name;
+      document.getElementById('modalDescription').textContent = project.description;
+      document.getElementById('modalPrice').textContent = `$${project.price}`;
+      document.getElementById('modalTech').textContent = project.tech;
+      document.getElementById('modalInfo').textContent = project.info;
+
+      const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+      document.getElementById('modalFeatures').innerHTML = featuresHtml;
+
+      const modalImage = document.getElementById('modalImage');
+      modalImage.className = `project-image ${project.grad}`;
+      modalImage.textContent = project.icon;
+      modalImage.style.fontSize = '5rem';
+
+      document.getElementById('projectModal').classList.add('show');
+    }
+
+    // Close Modal
+    function closeModal(){
+      document.getElementById('projectModal').classList.remove('show');
+      currentProject = null;
+    }
+
+    // Buy Project
+    function buyProject(projectId){
+      let project;
+      
+      if(projectId){
+        project = projects.find(p => p.id === projectId);
+      } else {
+        project = currentProject;
+      }
+
+      if(!project) return;
+
+      const message = `السلام عليكم، أنا مهتم بشراء المشروع: ${project.name} (رقم المشروع: ${project.id}) - السعر: $${project.price}`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/9647882983338?text=${encodedMessage}`;
+
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('projectModal');
+      if(event.target == modal){
+        closeModal();
+      }
+    }
+
+    // Hide Navbar on Scroll
+
+    let lastScrollTop = 0;
+    const nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if(scrollTop > lastScrollTop && scrollTop > 100){
+        nav.classList.add('hide-nav');
+      } else {
+        nav.classList.remove('hide-nav');
+      }
+      
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // Theme Toggle
+
+    const toggleBtn = document.getElementById('themeToggle');
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+    });
 
     // Interactive Particles Background
     
@@ -873,119 +1357,8 @@
       });
     });
 
-    // Hide Navbar on Scroll
-
-    let lastScrollTop = 0;
-    const nav = document.querySelector('nav');
-
-    window.addEventListener('scroll', () => {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if(scrollTop > lastScrollTop && scrollTop > 100){
-        nav.classList.add('hide-nav');
-      } else {
-        nav.classList.remove('hide-nav');
-      }
-      
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-
-    // Theme Toggle
-
-    const toggleBtn = document.getElementById('themeToggle');
-
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-    });
-
-    // Products
-
-    const productsGrid = document.getElementById('productsGrid');
-
-    const products = [
-      {id:1,name:"Medical Management System",icon:"🏥"},
-      {id:2,name:"Hospital ERP",icon:"🏨"},
-      {id:3,name:"Clinic Booking System",icon:"📋"},
-      {id:4,name:"School Management System",icon:"🎓"},
-      {id:5,name:"Inventory Management",icon:"📦"},
-      {id:6,name:"POS Software",icon:"💳"},
-      {id:7,name:"Restaurant System",icon:"🍽️"},
-      {id:8,name:"HR Management",icon:"👥"},
-      {id:9,name:"Accounting Dashboard",icon:"📊"},
-      {id:10,name:"CRM Platform",icon:"📱"},
-      {id:11,name:"Real Estate System",icon:"🏢"},
-      {id:12,name:"E-Commerce Platform",icon:"🛒"},
-      {id:13,name:"AI Chatbot System",icon:"🤖"},
-      {id:14,name:"API Integration Suite",icon:"🔌"},
-      {id:15,name:"Cloud Storage System",icon:"☁️"},
-      {id:16,name:"Custom CMS",icon:"📝"},
-      {id:17,name:"Project Management App",icon:"📅"},
-      {id:18,name:"Task Automation Tool",icon:"⚙️"},
-      {id:19,name:"Cyber Security Dashboard",icon:"🔒"},
-      {id:20,name:"Employee Portal",icon:"🔑"},
-      {id:21,name:"Online Learning Platform",icon:"📚"},
-      {id:22,name:"Smart Attendance System",icon:"✅"},
-      {id:23,name:"Logistics Dashboard",icon:"🚚"},
-      {id:24,name:"Delivery Tracking System",icon:"📍"},
-      {id:25,name:"Banking Management",icon:"🏦"},
-      {id:26,name:"Finance Analytics",icon:"📈"},
-      {id:27,name:"Social Media Dashboard",icon:"📲"},
-      {id:28,name:"Video Streaming Platform",icon:"🎥"},
-      {id:29,name:"IoT Monitoring System",icon:"📡"},
-      {id:30,name:"Digital Wallet",icon:"💰"},
-      {id:31,name:"Fitness Management App",icon:"💪"},
-      {id:32,name:"Pharmacy System",icon:"💊"},
-      {id:33,name:"Appointment Scheduler",icon:"🕒"},
-      {id:34,name:"Data Analytics Panel",icon:"📊"},
-      {id:35,name:"Enterprise ERP",icon:"🏭"},
-      {id:36,name:"SaaS Admin Dashboard",icon:"⚡"},
-      {id:37,name:"Custom API Builder",icon:"🛠️"},
-      {id:38,name:"AI Automation Tool",icon:"🎯"},
-      {id:39,name:"Modern Portfolio CMS",icon:"🎨"},
-      {id:40,name:"Business Intelligence System",icon:"🧠"}
-    ];
-
-    const gradients = ['grad-1','grad-2','grad-3','grad-4','grad-5','grad-6','grad-7','grad-8','grad-9','grad-10'];
-
-    products.forEach((product,index)=>{
-      const gradClass = gradients[index % gradients.length];
-      const whatsappLink = `https://wa.me/9647882983338?text=مرحباً,%20أنا%20مهتم%20بـ:%20${encodeURIComponent(product.name)}%20(المنتج%20رقم:%20${product.id})%20من%2019[...]
-
-      productsGrid.innerHTML += `
-
-        <div class="product-card">
-
-          <div class="product-image ${gradClass}">
-            ${product.icon}
-          </div>
-
-          <span class="product-tag">
-            Premium Software
-          </span>
-
-          <h3>${product.name}</h3>
-
-          <p>
-            Professional enterprise-grade software solution with
-            scalable architecture, secure backend, analytics,
-            responsive UI and modern API integrations.
-          </p>
-
-          <div class="product-price">
-            $749
-          </div>
-
-          <a href="${whatsappLink}" target="_blank" class="details-btn">
-            💬 شراء عبر واتس
-          </a>
-
-        </div>
-
-      `;
-
-    });
-
-    // Initialize particles
+    // Initialize
+    renderProjects();
     createParticles();
 
   </script>
