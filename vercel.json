@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "public": true,
+  "buildCommand": "echo 'Build complete'",
+  "framework": "static",
+  "projectSettings": {
+    "installCommand": "echo 'No installation needed'",
+    "buildCommand": "echo 'No build needed'",
+    "outputDirectory": "./"
+  }
+}

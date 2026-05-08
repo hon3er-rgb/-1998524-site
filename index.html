@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1998524 | Software Solutions</title>
+
+  <!-- Tajawal Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    :root{
+      --dark-bg:#050505;
+      --dark-card:#101010;
+      --dark-text:#f1f1f1;
+      --dark-accent:#d9a400;
+
+      --light-bg:#f8f9fb;
+      --light-card:#ffffff;
+      --light-text:#111827;
+      --light-accent:#2563eb;
+
+      --transition:0.4s ease;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Tajawal',sans-serif;
+      background:var(--dark-bg);
+      color:var(--dark-text);
+      transition:var(--transition);
+      overflow-x:hidden;
+    }
+
+    body.light{
+      background:var(--light-bg);
+      color:var(--light-text);
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:90%;
+      max-width:1400px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:999;
+      background:rgba(0,0,0,0.85);
+      backdrop-filter:blur(15px);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    body.light nav{
+      background:rgba(255,255,255,0.85);
+    }
+
+    .nav-container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 5%;
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:800;
+      color:var(--dark-accent);
+      letter-spacing:2px;
+    }
+
+    body.light .logo{
+      color:var(--light-accent);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      position:relative;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--dark-accent);
+    }
+
+    body.light .nav-links a:hover{
+      color:var(--light-accent);
+    }
+
+    .toggle-btn{
+      cursor:pointer;
+      border:none;
+      padding:10px 15px;
+      border-radius:10px;
+      background:var(--dark-accent);
+      color:#000;
+      font-weight:700;
+    }
+
+    body.light .toggle-btn{
+      background:var(--light-accent);
+      color:#fff;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,var(--dark-accent),transparent);
+      opacity:0.08;
+      top:-150px;
+      right:-150px;
+    }
+
+    body.light .hero::before{
+      background:radial-gradient(circle,var(--light-accent),transparent);
+    }
+
+    .hero-content{
+      z-index:2;
+    }
+
+    .terminal{
+      width:fit-content;
+      margin:auto;
+      background:#0b0b0b;
+      padding:30px;
+      border-radius:18px;
+      box-shadow:0 0 30px rgba(0,0,0,0.4);
+      text-align:left;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    body.light .terminal{
+      background:white;
+    }
+
+    .terminal-header{
+      display:flex;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+    }
+
+    .red{background:#ff5f57;}
+    .yellow{background:#febc2e;}
+    .green{background:#28c840;}
+
+    .typing{
+      font-size:3rem;
+      font-weight:800;
+      color:var(--dark-accent);
+      border-right:3px solid var(--dark-accent);
+      width:0;
+      overflow:hidden;
+      white-space:nowrap;
+      animation:typing 4s steps(12,end) forwards,
+      blink .7s infinite;
+    }
+
+    body.light .typing{
+      color:var(--light-accent);
+      border-color:var(--light-accent);
+    }
+
+    @keyframes typing{
+      to{
+        width:100%;
+      }
+    }
+
+    @keyframes blink{
+      50%{
+        border-color:transparent;
+      }
+    }
+
+    .hero p{
+      margin-top:30px;
+      font-size:1.2rem;
+      max-width:700px;
+      line-height:1.8;
+      opacity:0.85;
+    }
+
+    .hero-buttons{
+      margin-top:40px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 28px;
+      border-radius:14px;
+      font-weight:700;
+      transition:0.3s;
+      border:none;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:var(--dark-accent);
+      color:#000;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+    }
+
+    body.light .btn-primary{
+      background:var(--light-accent);
+      color:white;
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,0.2);
+      background:transparent;
+      color:white;
+    }
+
+    body.light .btn-outline{
+      color:#111;
+      border:1px solid rgba(0,0,0,0.1);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      font-size:2.8rem;
+      margin-bottom:20px;
+      text-align:center;
+      font-weight:800;
+    }
+
+    .section-sub{
+      text-align:center;
+      max-width:700px;
+      margin:auto;
+      opacity:0.75;
+      margin-bottom:60px;
+      line-height:1.8;
+    }
+
+    /* ABOUT */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .about-card{
+      background:var(--dark-card);
+      padding:35px;
+      border-radius:24px;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    body.light .about-card{
+      background:var(--light-card);
+    }
+
+    .about-card:hover{
+      transform:translateY(-10px);
+      border-color:var(--dark-accent);
+    }
+
+    body.light .about-card:hover{
+      border-color:var(--light-accent);
+    }
+
+    .about-card i{
+      font-size:2.5rem;
+      margin-bottom:20px;
+      color:var(--dark-accent);
+    }
+
+    body.light .about-card i{
+      color:var(--light-accent);
+    }
+
+    /* PRODUCTS */
+
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .product-card{
+      background:var(--dark-card);
+      padding:25px;
+      border-radius:20px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    body.light .product-card{
+      background:var(--light-card);
+    }
+
+    .product-card:hover{
+      transform:translateY(-12px) scale(1.02);
+      border-color:var(--dark-accent);
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    body.light .product-card:hover{
+      border-color:var(--light-accent);
+    }
+
+    .product-card h3{
+      margin:20px 0 10px;
+      font-size:1.4rem;
+    }
+
+    .product-card p{
+      opacity:0.8;
+      line-height:1.7;
+    }
+
+    .product-tag{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:50px;
+      background:rgba(217,164,0,0.15);
+      color:var(--dark-accent);
+      font-size:0.9rem;
+      font-weight:700;
+    }
+
+    body.light .product-tag{
+      background:rgba(37,99,235,0.12);
+      color:var(--light-accent);
+    }
+
+    .details-btn{
+      margin-top:25px;
+      display:inline-block;
+      padding:12px 20px;
+      border-radius:12px;
+      background:var(--dark-accent);
+      color:black;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    body.light .details-btn{
+      background:var(--light-accent);
+      color:white;
+    }
+
+    .details-btn:hover{
+      transform:scale(1.05);
+    }
+
+    /* CONTACT */
+
+    .contact-wrapper{
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+
+    .contact-card{
+      width:260px;
+      background:var(--dark-card);
+      padding:40px 20px;
+      text-align:center;
+      border-radius:20px;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    body.light .contact-card{
+      background:var(--light-card);
+    }
+
+    .contact-card:hover{
+      transform:translateY(-10px);
+      border-color:var(--dark-accent);
+    }
+
+    body.light .contact-card:hover{
+      border-color:var(--light-accent);
+    }
+
+    .contact-card i{
+      font-size:3rem;
+      margin-bottom:20px;
+      color:var(--dark-accent);
+    }
+
+    body.light .contact-card i{
+      color:var(--light-accent);
+    }
+
+    footer{
+      padding:40px 0;
+      text-align:center;
+      opacity:0.7;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .typing{
+        font-size:2rem;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <div class="nav-container">
+
+      <div class="logo">1998524</div>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+
+        <button class="toggle-btn" id="themeToggle">
+          Toggle Mode
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="terminal">
+
+        <div class="terminal-header">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+
+        <div class="typing">
+          > 1998524
+        </div>
+
+      </div>
+
+      <p>
+        Futuristic Software Engineering Platform specialized in
+        Medical Systems, Management Solutions, Web Development,
+        API Integrations and Ultra Professional Digital Products.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary">
+          Explore Products
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          Contact Support
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        About Us
+      </h2>
+
+      <p class="section-sub">
+        We build ultra-modern software systems and futuristic digital experiences
+        for startups, companies, clinics, and enterprises.
+      </p>
+
+      <div class="about-grid">
+
+        <div class="about-card">
+          <i class="fa-solid fa-code"></i>
+          <h3>Web Development</h3>
+          <p>
+            Full-stack applications using modern technologies
+            with scalable architecture and high security.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h3>Custom Systems</h3>
+          <p>
+            Medical systems, management dashboards,
+            POS solutions, ERP systems and APIs.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h3>Professional Security</h3>
+          <p>
+            Secure backend integrations with authentication,
+            database management and cloud scalability.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PRODUCTS -->
+
+  <section id="products">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Software Products
+      </h2>
+
+      <p class="section-sub">
+        40 Professional Software Solutions crafted for innovation.
+      </p>
+
+      <div class="products-grid" id="productsGrid"></div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Contact & Support
+      </h2>
+
+      <p class="section-sub">
+        Connect with us instantly through your favorite platform.
+      </p>
+
+      <div class="contact-wrapper">
+
+        <div class="contact-card">
+          <i class="fa-brands fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>07882983338</p>
+        </div>
+
+        <div class="contact-card">
+          <i class="fa-brands fa-telegram"></i>
+          <h3>Telegram</h3>
+          <p>07882983338</p>
+        </div>
+
+        <div class="contact-card">
+          <i class="fa-brands fa-viber"></i>
+          <h3>Viber</h3>
+          <p>07882983338</p>
+        </div>
+
+        <div class="contact-card">
+          <i class="fa-solid fa-envelope"></i>
+          <h3>Email</h3>
+          <p>en8ahmedjabbar@gmail.com</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 - 1998524 | Ultra Professional Software Solutions
+  </footer>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    // Theme Toggle
+
+    const toggleBtn = document.getElementById('themeToggle');
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+    });
+
+    // Products
+
+    const productsGrid = document.getElementById('productsGrid');
+
+    const productNames = [
+
+      "Medical Management System",
+      "Hospital ERP",
+      "Clinic Booking System",
+      "School Management System",
+      "Inventory Management",
+      "POS Software",
+      "Restaurant System",
+      "HR Management",
+      "Accounting Dashboard",
+      "CRM Platform",
+      "Real Estate System",
+      "E-Commerce Platform",
+      "AI Chatbot System",
+      "API Integration Suite",
+      "Cloud Storage System",
+      "Custom CMS",
+      "Project Management App",
+      "Task Automation Tool",
+      "Cyber Security Dashboard",
+      "Employee Portal",
+      "Online Learning Platform",
+      "Smart Attendance System",
+      "Logistics Dashboard",
+      "Delivery Tracking System",
+      "Banking Management",
+      "Finance Analytics",
+      "Social Media Dashboard",
+      "Video Streaming Platform",
+      "IoT Monitoring System",
+      "Digital Wallet",
+      "Fitness Management App",
+      "Pharmacy System",
+      "Appointment Scheduler",
+      "Data Analytics Panel",
+      "Enterprise ERP",
+      "SaaS Admin Dashboard",
+      "Custom API Builder",
+      "AI Automation Tool",
+      "Modern Portfolio CMS",
+      "Business Intelligence System"
+
+    ];
+
+    productNames.forEach((product,index)=>{
+
+      productsGrid.innerHTML += `
+
+        <div class="product-card">
+
+          <span class="product-tag">
+            Premium Software
+          </span>
+
+          <h3>${product}</h3>
+
+          <p>
+            Professional enterprise-grade software solution with
+            scalable architecture, secure backend, analytics,
+            responsive UI and modern API integrations.
+          </p>
+
+          <a href="#" class="details-btn">
+            View Details
+          </a>
+
+        </div>
+
+      `;
+
+    });
+
+  </script>
+
+</body>
+</html>
