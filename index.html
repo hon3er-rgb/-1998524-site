@@ -41,6 +41,18 @@
       color:var(--dark-text);
       transition:var(--transition);
       overflow-x:hidden;
+      position:relative;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      z-index:1;
     }
 
     body.light{
@@ -174,20 +186,8 @@
     }
 
     .terminal-header{
-      display:flex;
-      gap:10px;
-      margin-bottom:20px;
+      display:none;
     }
-
-    .dot{
-      width:12px;
-      height:12px;
-      border-radius:50%;
-    }
-
-    .red{background:#ff5f57;}
-    .yellow{background:#febc2e;}
-    .green{background:#28c840;}
 
     .typing{
       font-size:3rem;
@@ -495,6 +495,26 @@
       border-top:1px solid rgba(255,255,255,0.05);
     }
 
+    /* FLOATING PARTICLES BACKGROUND */
+
+    .particle{
+      position:fixed;
+      border-radius:50%;
+      pointer-events:none;
+      opacity:0.6;
+      transition:all 0.1s ease;
+    }
+
+    body .particle{
+      background:radial-gradient(circle at 30% 30%, #febc2e, #ffa500);
+      box-shadow:0 0 15px rgba(254, 188, 46, 0.5);
+    }
+
+    body.light .particle{
+      background:radial-gradient(circle at 30% 30%, #2563eb, #1e40af);
+      box-shadow:0 0 15px rgba(37, 99, 235, 0.5);
+    }
+
     /* RESPONSIVE */
 
     @media(max-width:768px){
@@ -625,12 +645,6 @@
     <div class="hero-content">
 
       <div class="terminal">
-
-        <div class="terminal-header">
-          <div class="dot red"></div>
-          <div class="dot yellow"></div>
-          <div class="dot green"></div>
-        </div>
 
         <div class="typing">
           > 1998524
@@ -782,6 +796,83 @@
 
   <script>
 
+    // Interactive Particles Background
+    
+    function createParticles(){
+      const particleCount = 50;
+      
+      for(let i = 0; i < particleCount; i++){
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 4 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        
+        document.body.appendChild(particle);
+        
+        animateParticle(particle);
+      }
+    }
+    
+    function animateParticle(particle){
+      const duration = Math.random() * 20 + 10;
+      const dirX = (Math.random() - 0.5) * 100;
+      const dirY = (Math.random() - 0.5) * 100;
+      
+      let x = parseFloat(particle.style.left);
+      let y = parseFloat(particle.style.top);
+      let vx = dirX / duration;
+      let vy = dirY / duration;
+      
+      function move(){
+        x += vx;
+        y += vy;
+        
+        if(x < 0 || x > 100) vx *= -1;
+        if(y < 0 || y > 100) vy *= -1;
+        
+        x = Math.max(0, Math.min(100, x));
+        y = Math.max(0, Math.min(100, y));
+        
+        particle.style.left = x + '%';
+        particle.style.top = y + '%';
+        
+        requestAnimationFrame(move);
+      }
+      
+      move();
+    }
+    
+    // Mouse interaction with particles
+    document.addEventListener('mousemove', (e) => {
+      const particles = document.querySelectorAll('.particle');
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      
+      particles.forEach(particle => {
+        const rect = particle.getBoundingClientRect();
+        const particleX = rect.left;
+        const particleY = rect.top;
+        
+        const distance = Math.sqrt(
+          Math.pow(mouseX - particleX, 2) + Math.pow(mouseY - particleY, 2)
+        );
+        
+        if(distance < 150){
+          const angle = Math.atan2(particleY - mouseY, particleX - mouseX);
+          const force = (150 - distance) / 150;
+          
+          particle.style.transform = `translate(${Math.cos(angle) * force * 30}px, ${Math.sin(angle) * force * 30}px)`;
+        } else {
+          particle.style.transform = 'translate(0, 0)';
+        }
+      });
+    });
+
     // Hide Navbar on Scroll
 
     let lastScrollTop = 0;
@@ -858,7 +949,7 @@
 
     products.forEach((product,index)=>{
       const gradClass = gradients[index % gradients.length];
-      const whatsappLink = `https://wa.me/9647882983338?text=مرحباً,%20أنا%20مهتم%20بـ:%20${encodeURIComponent(product.name)}%20(المنتج%20رقم:%20${product.id})%20من%201998524.%20هل%20يمكنك%20مساعدتي؟`;
+      const whatsappLink = `https://wa.me/9647882983338?text=مرحباً,%20أنا%20مهتم%20بـ:%20${encodeURIComponent(product.name)}%20(المنتج%20رقم:%20${product.id})%20من%2019[...]
 
       productsGrid.innerHTML += `
 
@@ -893,6 +984,9 @@
       `;
 
     });
+
+    // Initialize particles
+    createParticles();
 
   </script>
 
