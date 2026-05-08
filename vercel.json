@@ -1,6 +1,4 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Build complete'",
-  "framework": "static",
-  "public": true
+  "buildCommand": "echo 'Build complete'"
 }
