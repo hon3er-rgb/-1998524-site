@@ -356,7 +356,6 @@
     .product-image{
       width:100%;
       height:180px;
-      background:linear-gradient(135deg,var(--dark-accent),rgba(217,164,0,0.3));
       border-radius:12px;
       margin-bottom:15px;
       display:flex;
@@ -365,13 +364,18 @@
       font-size:2.5rem;
       overflow:hidden;
       position:relative;
-      background-size:cover;
-      background-position:center;
     }
 
-    body.light .product-image{
-      background:linear-gradient(135deg,var(--light-accent),rgba(37,99,235,0.2));
-    }
+    .product-image.grad-1{background:linear-gradient(135deg,#667eea,#764ba2);}
+    .product-image.grad-2{background:linear-gradient(135deg,#f093fb,#f5576c);}
+    .product-image.grad-3{background:linear-gradient(135deg,#4facfe,#00f2fe);}
+    .product-image.grad-4{background:linear-gradient(135deg,#43e97b,#38f9d7);}
+    .product-image.grad-5{background:linear-gradient(135deg,#fa709a,#fee140);}
+    .product-image.grad-6{background:linear-gradient(135deg,#30cfd0,#330867);}
+    .product-image.grad-7{background:linear-gradient(135deg,#a8edea,#fed6e3);}
+    .product-image.grad-8{background:linear-gradient(135deg,#ff9a56,#ff6a88);}
+    .product-image.grad-9{background:linear-gradient(135deg,#2e2e78,#662d91);}
+    .product-image.grad-10{background:linear-gradient(135deg,#00c6ff,#0072ff);}
 
     .product-card:hover{
       transform:translateY(-12px) scale(1.02);
@@ -808,55 +812,61 @@
     const productsGrid = document.getElementById('productsGrid');
 
     const products = [
-      {name:"Medical Management System",image:"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop"},
-      {name:"Hospital ERP",image:"https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&h=300&fit=crop"},
-      {name:"Clinic Booking System",image:"https://images.unsplash.com/photo-1519915212116-7cfef71f1d3e?w=400&h=300&fit=crop"},
-      {name:"School Management System",image:"https://images.unsplash.com/photo-1427504494785-cdfd072e4b19?w=400&h=300&fit=crop"},
-      {name:"Inventory Management",image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop"},
-      {name:"POS Software",image:"https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=300&fit=crop"},
-      {name:"Restaurant System",image:"https://images.unsplash.com/photo-1504674900150-0877b8651ce3?w=400&h=300&fit=crop"},
-      {name:"HR Management",image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"},
-      {name:"Accounting Dashboard",image:"https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=400&h=300&fit=crop"},
-      {name:"CRM Platform",image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"},
-      {name:"Real Estate System",image:"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop"},
-      {name:"E-Commerce Platform",image:"https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=400&h=300&fit=crop"},
-      {name:"AI Chatbot System",image:"https://images.unsplash.com/photo-1677442d019cecf8978d4a22b194e726?w=400&h=300&fit=crop"},
-      {name:"API Integration Suite",image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"},
-      {name:"Cloud Storage System",image:"https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400&h=300&fit=crop"},
-      {name:"Custom CMS",image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"},
-      {name:"Project Management App",image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop"},
-      {name:"Task Automation Tool",image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"},
-      {name:"Cyber Security Dashboard",image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"},
-      {name:"Employee Portal",image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"},
-      {name:"Online Learning Platform",image:"https://images.unsplash.com/photo-1427504494785-cdfd072e4b19?w=400&h=300&fit=crop"},
-      {name:"Smart Attendance System",image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop"},
-      {name:"Logistics Dashboard",image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop"},
-      {name:"Delivery Tracking System",image:"https://images.unsplash.com/photo-1434536568808-a58fb42c25d0?w=400&h=300&fit=crop"},
-      {name:"Banking Management",image:"https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=300&fit=crop"},
-      {name:"Finance Analytics",image:"https://images.unsplash.com/photo-1579621970563-430f63602022?w=400&h=300&fit=crop"},
-      {name:"Social Media Dashboard",image:"https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400&h=300&fit=crop"},
-      {name:"Video Streaming Platform",image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"},
-      {name:"IoT Monitoring System",image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"},
-      {name:"Digital Wallet",image:"https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=300&fit=crop"},
-      {name:"Fitness Management App",image:"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=300&fit=crop"},
-      {name:"Pharmacy System",image:"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop"},
-      {name:"Appointment Scheduler",image:"https://images.unsplash.com/photo-1519915212116-7cfef71f1d3e?w=400&h=300&fit=crop"},
-      {name:"Data Analytics Panel",image:"https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=400&h=300&fit=crop"},
-      {name:"Enterprise ERP",image:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"},
-      {name:"SaaS Admin Dashboard",image:"https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=400&h=300&fit=crop"},
-      {name:"Custom API Builder",image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"},
-      {name:"AI Automation Tool",image:"https://images.unsplash.com/photo-1677442d019cecf8978d4a22b194e726?w=400&h=300&fit=crop"},
-      {name:"Modern Portfolio CMS",image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop"},
-      {name:"Business Intelligence System",image:"https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=400&h=300&fit=crop"}
+      {id:1,name:"Medical Management System",icon:"🏥"},
+      {id:2,name:"Hospital ERP",icon:"🏨"},
+      {id:3,name:"Clinic Booking System",icon:"📋"},
+      {id:4,name:"School Management System",icon:"🎓"},
+      {id:5,name:"Inventory Management",icon:"📦"},
+      {id:6,name:"POS Software",icon:"💳"},
+      {id:7,name:"Restaurant System",icon:"🍽️"},
+      {id:8,name:"HR Management",icon:"👥"},
+      {id:9,name:"Accounting Dashboard",icon:"📊"},
+      {id:10,name:"CRM Platform",icon:"📱"},
+      {id:11,name:"Real Estate System",icon:"🏢"},
+      {id:12,name:"E-Commerce Platform",icon:"🛒"},
+      {id:13,name:"AI Chatbot System",icon:"🤖"},
+      {id:14,name:"API Integration Suite",icon:"🔌"},
+      {id:15,name:"Cloud Storage System",icon:"☁️"},
+      {id:16,name:"Custom CMS",icon:"📝"},
+      {id:17,name:"Project Management App",icon:"📅"},
+      {id:18,name:"Task Automation Tool",icon:"⚙️"},
+      {id:19,name:"Cyber Security Dashboard",icon:"🔒"},
+      {id:20,name:"Employee Portal",icon:"🔑"},
+      {id:21,name:"Online Learning Platform",icon:"📚"},
+      {id:22,name:"Smart Attendance System",icon:"✅"},
+      {id:23,name:"Logistics Dashboard",icon:"🚚"},
+      {id:24,name:"Delivery Tracking System",icon:"📍"},
+      {id:25,name:"Banking Management",icon:"🏦"},
+      {id:26,name:"Finance Analytics",icon:"📈"},
+      {id:27,name:"Social Media Dashboard",icon:"📲"},
+      {id:28,name:"Video Streaming Platform",icon:"🎥"},
+      {id:29,name:"IoT Monitoring System",icon:"📡"},
+      {id:30,name:"Digital Wallet",icon:"💰"},
+      {id:31,name:"Fitness Management App",icon:"💪"},
+      {id:32,name:"Pharmacy System",icon:"💊"},
+      {id:33,name:"Appointment Scheduler",icon:"🕒"},
+      {id:34,name:"Data Analytics Panel",icon:"📊"},
+      {id:35,name:"Enterprise ERP",icon:"🏭"},
+      {id:36,name:"SaaS Admin Dashboard",icon:"⚡"},
+      {id:37,name:"Custom API Builder",icon:"🛠️"},
+      {id:38,name:"AI Automation Tool",icon:"🎯"},
+      {id:39,name:"Modern Portfolio CMS",icon:"🎨"},
+      {id:40,name:"Business Intelligence System",icon:"🧠"}
     ];
 
+    const gradients = ['grad-1','grad-2','grad-3','grad-4','grad-5','grad-6','grad-7','grad-8','grad-9','grad-10'];
+
     products.forEach((product,index)=>{
+      const gradClass = gradients[index % gradients.length];
+      const whatsappLink = `https://wa.me/9647882983338?text=مرحباً,%20أنا%20مهتم%20بـ:%20${encodeURIComponent(product.name)}%20(المنتج%20رقم:%20${product.id})%20من%201998524.%20هل%20يمكنك%20مساعدتي؟`;
 
       productsGrid.innerHTML += `
 
         <div class="product-card">
 
-          <div class="product-image" style="background-image: url('${product.image}')"></div>
+          <div class="product-image ${gradClass}">
+            ${product.icon}
+          </div>
 
           <span class="product-tag">
             Premium Software
@@ -874,8 +884,8 @@
             $749
           </div>
 
-          <a href="#" class="details-btn">
-            View Details
+          <a href="${whatsappLink}" target="_blank" class="details-btn">
+            💬 شراء عبر واتس
           </a>
 
         </div>
