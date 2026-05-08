@@ -333,8 +333,8 @@
 
     .products-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:25px;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
     }
 
     .product-card{
@@ -355,20 +355,32 @@
 
     .product-image{
       width:100%;
-      height:220px;
+      height:180px;
       background:linear-gradient(135deg,var(--dark-accent),rgba(217,164,0,0.3));
       border-radius:12px;
       margin-bottom:15px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:3rem;
+      font-size:2.5rem;
       overflow:hidden;
+      position:relative;
     }
 
     body.light .product-image{
       background:linear-gradient(135deg,var(--light-accent),rgba(37,99,235,0.2));
     }
+
+    .product-image.grad-1{background:linear-gradient(135deg,#667eea,#764ba2);}
+    .product-image.grad-2{background:linear-gradient(135deg,#f093fb,#f5576c);}
+    .product-image.grad-3{background:linear-gradient(135deg,#4facfe,#00f2fe);}
+    .product-image.grad-4{background:linear-gradient(135deg,#43e97b,#38f9d7);}
+    .product-image.grad-5{background:linear-gradient(135deg,#fa709a,#fee140);}
+    .product-image.grad-6{background:linear-gradient(135deg,#30cfd0,#330867);}
+    .product-image.grad-7{background:linear-gradient(135deg,#a8edea,#fed6e3);}
+    .product-image.grad-8{background:linear-gradient(135deg,#ff9a56,#ff6a88);}
+    .product-image.grad-9{background:linear-gradient(135deg,#2e2e78,#662d91);}
+    .product-image.grad-10{background:linear-gradient(135deg,#00c6ff,#0072ff);}
 
     .product-card:hover{
       transform:translateY(-12px) scale(1.02);
@@ -506,6 +518,81 @@
 
       .section-title{
         font-size:2rem;
+      }
+
+      .products-grid{
+        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+        gap:15px;
+      }
+
+      .product-card{
+        padding:18px;
+      }
+
+      .product-image{
+        height:150px;
+      }
+
+      .product-card h3{
+        font-size:1.1rem;
+      }
+
+      .product-card p{
+        font-size:0.9rem;
+      }
+
+      .product-price{
+        font-size:1.5rem;
+      }
+
+      .about-grid{
+        grid-template-columns:1fr;
+      }
+
+      .contact-wrapper{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .contact-card{
+        width:100%;
+      }
+
+      .nav-container{
+        gap:20px;
+      }
+
+    }
+
+    @media(max-width:480px){
+
+      .typing{
+        font-size:1.5rem;
+      }
+
+      .hero{
+        padding-top:80px;
+      }
+
+      .section-title{
+        font-size:1.8rem;
+      }
+
+      .products-grid{
+        grid-template-columns:1fr;
+      }
+
+      .terminal{
+        padding:20px;
+      }
+
+      .hero-buttons{
+        flex-direction:column;
+        width:100%;
+      }
+
+      .btn{
+        width:100%;
       }
 
     }
@@ -729,58 +816,59 @@
 
     const productsGrid = document.getElementById('productsGrid');
 
+    const gradients = ['grad-1','grad-2','grad-3','grad-4','grad-5','grad-6','grad-7','grad-8','grad-9','grad-10'];
+
     const products = [
-      {name:"Medical Management System",icon:"🏥",price:"$899"},
-      {name:"Hospital ERP",icon:"🏨",price:"$950"},
-      {name:"Clinic Booking System",icon:"📋",price:"$799"},
-      {name:"School Management System",icon:"🎓",price:"$849"},
-      {name:"Inventory Management",icon:"📦",price:"$749"},
-      {name:"POS Software",icon:"💳",price:"$699"},
-      {name:"Restaurant System",icon:"🍽️",price:"$799"},
-      {name:"HR Management",icon:"👥",price:"$850"},
-      {name:"Accounting Dashboard",icon:"📊",price:"$899"},
-      {name:"CRM Platform",icon:"📱",price:"$950"},
-      {name:"Real Estate System",icon:"🏢",price:"$899"},
-      {name:"E-Commerce Platform",icon:"🛒",price:"$999"},
-      {name:"AI Chatbot System",icon:"🤖",price:"$799"},
-      {name:"API Integration Suite",icon:"🔌",price:"$699"},
-      {name:"Cloud Storage System",icon:"☁️",price:"$649"},
-      {name:"Custom CMS",icon:"📝",price:"$749"},
-      {name:"Project Management App",icon:"📅",price:"$799"},
-      {name:"Task Automation Tool",icon:"⚙️",price:"$699"},
-      {name:"Cyber Security Dashboard",icon:"🔒",price:"$999"},
-      {name:"Employee Portal",icon:"🔑",price:"$799"},
-      {name:"Online Learning Platform",icon:"📚",price:"$899"},
-      {name:"Smart Attendance System",icon:"✅",price:"$649"},
-      {name:"Logistics Dashboard",icon:"🚚",price:"$849"},
-      {name:"Delivery Tracking System",icon:"📍",price:"$749"},
-      {name:"Banking Management",icon:"🏦",price:"$999"},
-      {name:"Finance Analytics",icon:"📈",price:"$899"},
-      {name:"Social Media Dashboard",icon:"📲",price:"$799"},
-      {name:"Video Streaming Platform",icon:"🎥",price:"$999"},
-      {name:"IoT Monitoring System",icon:"📡",price:"$899"},
-      {name:"Digital Wallet",icon:"💰",price:"$649"},
-      {name:"Fitness Management App",icon:"💪",price:"$699"},
-      {name:"Pharmacy System",icon:"💊",price:"$799"},
-      {name:"Appointment Scheduler",icon:"🕒",price:"$649"},
-      {name:"Data Analytics Panel",icon:"📊",price:"$899"},
-      {name:"Enterprise ERP",icon:"🏭",price:"$999"},
-      {name:"SaaS Admin Dashboard",icon:"⚡",price:"$799"},
-      {name:"Custom API Builder",icon:"🛠️",price:"$699"},
-      {name:"AI Automation Tool",icon:"🎯",price:"$899"},
-      {name:"Modern Portfolio CMS",icon:"🎨",price:"$749"},
-      {name:"Business Intelligence System",icon:"🧠",price:"$999"}
+      {name:"Medical Management System",price:"$899"},
+      {name:"Hospital ERP",price:"$950"},
+      {name:"Clinic Booking System",price:"$799"},
+      {name:"School Management System",price:"$849"},
+      {name:"Inventory Management",price:"$749"},
+      {name:"POS Software",price:"$699"},
+      {name:"Restaurant System",price:"$799"},
+      {name:"HR Management",price:"$850"},
+      {name:"Accounting Dashboard",price:"$899"},
+      {name:"CRM Platform",price:"$950"},
+      {name:"Real Estate System",price:"$899"},
+      {name:"E-Commerce Platform",price:"$999"},
+      {name:"AI Chatbot System",price:"$799"},
+      {name:"API Integration Suite",price:"$699"},
+      {name:"Cloud Storage System",price:"$649"},
+      {name:"Custom CMS",price:"$749"},
+      {name:"Project Management App",price:"$799"},
+      {name:"Task Automation Tool",price:"$699"},
+      {name:"Cyber Security Dashboard",price:"$999"},
+      {name:"Employee Portal",price:"$799"},
+      {name:"Online Learning Platform",price:"$899"},
+      {name:"Smart Attendance System",price:"$649"},
+      {name:"Logistics Dashboard",price:"$849"},
+      {name:"Delivery Tracking System",price:"$749"},
+      {name:"Banking Management",price:"$999"},
+      {name:"Finance Analytics",price:"$899"},
+      {name:"Social Media Dashboard",price:"$799"},
+      {name:"Video Streaming Platform",price:"$999"},
+      {name:"IoT Monitoring System",price:"$899"},
+      {name:"Digital Wallet",price:"$649"},
+      {name:"Fitness Management App",price:"$699"},
+      {name:"Pharmacy System",price:"$799"},
+      {name:"Appointment Scheduler",price:"$649"},
+      {name:"Data Analytics Panel",price:"$899"},
+      {name:"Enterprise ERP",price:"$999"},
+      {name:"SaaS Admin Dashboard",price:"$799"},
+      {name:"Custom API Builder",price:"$699"},
+      {name:"AI Automation Tool",price:"$899"},
+      {name:"Modern Portfolio CMS",price:"$749"},
+      {name:"Business Intelligence System",price:"$999"}
     ];
 
     products.forEach((product,index)=>{
+      const gradClass = gradients[index % gradients.length];
 
       productsGrid.innerHTML += `
 
         <div class="product-card">
 
-          <div class="product-image">
-            ${product.icon}
-          </div>
+          <div class="product-image ${gradClass}"></div>
 
           <span class="product-tag">
             Premium Software
